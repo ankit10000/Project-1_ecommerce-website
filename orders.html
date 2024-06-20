@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orders - Red Store</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="navbar">
+      <div class="logo">
+        <a href="index.html"><img src="https://i.ibb.co/kDVwgwp/logo.png" alt="RedStore" width="125px"></a>
+      </div>
+      <nav>
+        <ul id="MenuItems">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="product.html">Products</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="account.html">Account</a></li>
+          <li><a href="orders.html">Orders</a></li> <!-- Added Orders button -->
+        </ul>
+      </nav>
+      <a href="cart.html"><img src="https://i.ibb.co/PNjjx3y/cart.png" alt="" width="30px" height="30px"></a>
+      <img src="https://i.ibb.co/6XbqwjD/menu.png" alt="" class="menu-icon" onclick="menutoggle()">
+    </div>
+  </div>
+
+  <div class="small-container orders-page">
+    <h2>Your Orders</h2>
+    <div id="ordersList"></div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="footer-col-1">
+          <h3>Download Our App</h3>
+          <p>Download App for Android and iOS mobile phone.</p>
+          <div class="app-logo">
+            <img src="https://i.ibb.co/KbPTYYQ/play-store.png" alt="">
+            <img src="https://i.ibb.co/hVM4X2p/app-store.png" alt="">
+          </div>
+        </div>
+        <div class="footer-col-2">
+          <img src="https://i.ibb.co/j3FNGj7/logo-white.png" alt="">
+          <p>
+            Our Purpose Is To Sustainably Make the Pleasure and Benefits of
+            Sports Accessible to the Many.
+          </p>
+        </div>
+        <div class="footer-col-3">
+          <h3>Useful Links</h3>
+          <ul>
+            <li>Coupons</li>
+            <li>Blog Post</li>
+            <li>Return Policy</li>
+            <li>Join Affiliate</li>
+          </ul>
+        </div>
+        <div class="footer-col-4">
+          <h3>Follow us</h3>
+          <ul>
+            <li>Facebook</li>
+            <li>Twitter</li>
+            <li>Instagram</li>
+            <li>YouTube</li>
+          </ul>
+        </div>
+      </div>
+      <hr>
+      <p class="copyright">Copyright &copy; 2021 - Red Store</p>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    var MenuItems = document.getElementById('MenuItems');
+    MenuItems.style.maxHeight = '0px';
+
+    function menutoggle() {
+      if (MenuItems.style.maxHeight == '0px') {
+        MenuItems.style.maxHeight = '200px';
+      } else {
+        MenuItems.style.maxHeight = '0px';
+      }
+    }
+
+    function displayOrders() {
+      const orders = JSON.parse(localStorage.getItem('orders')) || [];
+      const ordersList = document.getElementById('ordersList');
+
+      if (orders.length === 0) {
+        ordersList.innerHTML = '<p>No orders found.</p>';
+        return;
+      }
+
+      ordersList.innerHTML = orders.map(order => `
+        <div class="order">
+          <p><strong>Order ID:</strong> ${order.id}</p>
+          <p><strong>Address:</strong> ${order.address}</p>
+          <p><strong>Payment Method:</strong> ${order.payment}</p>
+          <h3>Order Summary</h3>
+          <table>
+            <tr>
+              <th>Product</th>
+              <th>Quantity</th>
+              <th>Subtotal</th>
+            </tr>
+            ${order.cart.map(item => `
+              <tr>
+                <td>${item.name}</td>
+                <td>1</td>
+                <td>₹${item.price.toFixed(2)}</td>
+              </tr>
+            `).join('')}
+            <tr>
+              <td colspan="2"><strong>Total</strong></td>
+              <td>₹${order.total.toFixed(2)}</td>
+            </tr>
+          </table>
+        </div>
+      `).join('');
+    }
+
+    window.onload = displayOrders;
+  </script>
+</body>
+</html>

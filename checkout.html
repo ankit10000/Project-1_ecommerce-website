@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Red Store</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="navbar">
+        <div class="logo">
+          <a href="index.html"><img src="https://i.ibb.co/kDVwgwp/logo.png" alt="RedStore" width="125px"></a>
+        </div>
+        <nav>
+          <ul id="MenuItems">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="product.html">Products</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="account.html">Account</a></li>
+            <li><a href="orders.html">Orders</a></li>
+          </ul>
+        </nav>
+        <a href="cart.html"><img src="https://i.ibb.co/PNjjx3y/cart.png" alt="" width="30px" height="30px"></a>
+        <img src="https://i.ibb.co/6XbqwjD/menu.png" alt="" class="menu-icon" onclick="menutoggle()">
+      </div>
+  </div>
+
+  <div class="small-container checkout-page">
+    <h2>Checkout</h2>
+    <form id="checkoutForm">
+      <label for="address">Address:</label>
+      <input type="text" id="address" name="address" required>
+      <br>
+      <label for="payment">Payment Method:</label>
+      <select id="payment" name="payment" required>
+        <option value="cod">Cash on Delivery</option>
+        <option value="credit">Credit Card</option>
+        <option value="debit">Debit Card</option>
+      </select>
+      <br>
+      <button type="submit">Place Order</button>
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="footer-col-1">
+          <h3>Download Our App</h3>
+          <p>Download App for Android and iOS mobile phone.</p>
+          <div class="app-logo">
+            <img src="https://i.ibb.co/KbPTYYQ/play-store.png" alt="">
+            <img src="https://i.ibb.co/hVM4X2p/app-store.png" alt="">
+          </div>
+        </div>
+        <div class="footer-col-2">
+          <img src="https://i.ibb.co/j3FNGj7/logo-white.png" alt="">
+          <p>
+            Our Purpose Is To Sustainably Make the Pleasure and Benefits of
+            Sports Accessible to the Many.
+          </p>
+        </div>
+        <div class="footer-col-3">
+          <h3>Useful Links</h3>
+          <ul>
+            <li>Coupons</li>
+            <li>Blog Post</li>
+            <li>Return Policy</li>
+            <li>Join Affiliate</li>
+          </ul>
+        </div>
+        <div class="footer-col-4">
+          <h3>Follow us</h3>
+          <ul>
+            <li>Facebook</li>
+            <li>Twitter</li>
+            <li>Instagram</li>
+            <li>YouTube</li>
+          </ul>
+        </div>
+      </div>
+      <hr>
+      <p class="copyright">Copyright &copy; 2021 - Red Store</p>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    var MenuItems = document.getElementById('MenuItems');
+    MenuItems.style.maxHeight = '0px';
+  
+    function menutoggle() {
+      if (MenuItems.style.maxHeight == '0px') {
+        MenuItems.style.maxHeight = '200px';
+      } else {
+        MenuItems.style.maxHeight = '0px';
+      }
+    }
+  
+    function placeOrder(event) {
+      event.preventDefault();
+      const address = document.getElementById('address').value;
+      const payment = document.getElementById('payment').value;
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  
+      if (cart.length === 0) {
+        alert('Your cart is empty.');
+        return;
+      }
+  
+      const orderId = new Date().getTime();
+      const order = {
+        id: orderId,
+        address: address,
+        payment: payment,
+        cart: cart,
+        total: cart.reduce((total, item) => total + item.price, 0)
+      };
+  
+      let orders = JSON.parse(localStorage.getItem('orders')) || [];
+      orders.push(order);
+      localStorage.setItem('orders', JSON.stringify(orders));
+  
+      // Store the current order in session storage for order confirmation page
+      sessionStorage.setItem('order', JSON.stringify(order));
+  
+      // Clear the cart
+      localStorage.removeItem('cart');
+  
+      // Redirect to order confirmation page
+      window.location.href = 'order_confirmation.html';
+    }
+  
+    document.getElementById('checkoutForm').addEventListener('submit', placeOrder);
+  </script>
+  
+</body>
+</html>

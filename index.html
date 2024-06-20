@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red Store</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="cart.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="https://i.ibb.co/kDVwgwp/logo.png" alt="RedStore" width="125px"></a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="product.html">Products</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="account.html">Account</a></li>
+                    <li><a href="orders.html">Orders</a></li>
+                </ul>
+            </nav>
+            <a href="cart.html">
+                <img src="https://i.ibb.co/PNjjx3y/cart.png" alt="Cart" width="30px" height="30px">
+                <span id="cartCount" class="cart-count">0</span>
+            </a>
+            <img src="https://i.ibb.co/6XbqwjD/menu.png" alt="" class="menu-icon" onclick="menutoggle()">
+        </div>
+    </div>
+
+    <div class="small-container">
+        <div class="row row-2">
+            <h2>All Products</h2>
+            <select>
+                <option value="">Default Shorting</option>
+                <option value="">Short by price</option>
+                <option value="">Short by popularity</option>
+                <option value="">Short by rating</option>
+                <option value="">Short by sale</option>
+            </select>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <img src="https://i.ibb.co/47Sk9QL/product-1.jpg" alt="">
+                <h4>Red Printed T-shirt</h4>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <p>₹500.00</p>
+                <button onclick="addToCart('Red Printed T-shirt', 500.00)">Add to Cart</button>
+            </div>
+            <div class="col-4">
+                <img src="https://i.ibb.co/47Sk9QL/product-1.jpg" alt="">
+                <h4>Green Printed T-shirt</h4>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <p>₹599.00</p>
+                <button onclick="addToCart('Green Printed T-shirt', 599.00)">Add to Cart</button>
+            </div>
+            <div class="col-4">
+                <img src="https://i.ibb.co/47Sk9QL/product-1.jpg" alt="">
+                <h4>Blue Printed T-shirt</h4>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <p>₹499.00</p>
+                <button onclick="addToCart('Blue Printed T-shirt', 499.00)">Add to Cart</button>
+            </div>
+            <div class="col-4">
+                <img src="https://i.ibb.co/47Sk9QL/product-1.jpg" alt="">
+                <h4>Black Printed T-shirt</h4>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <p>₹399.00</p>
+                <button onclick="addToCart('Black Printed T-shirt', 399.00)">Add to Cart</button>
+            </div>
+
+            <!-- Repeat for other products -->
+
+        </div>
+    </div>
+
+
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <h3>Download Our App</h3>
+                    <p>Download App for Android and iOS mobile phone.</p>
+                    <div class="app-logo">
+                        <img src="https://i.ibb.co/KbPTYYQ/play-store.png" alt="">
+                        <img src="https://i.ibb.co/hVM4X2p/app-store.png" alt="">
+                    </div>
+                </div>
+                <div class="footer-col-2">
+                    <img src="https://i.ibb.co/j3FNGj7/logo-white.png" alt="">
+                    <p>
+                        Our Purpose Is To Sustainably Make the Pleasure and Benefits of
+                        Sports Accessible to the Many.
+                    </p>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Useful Links</h3>
+                    <ul>
+                        <li>Coupons</li>
+                        <li>Blog Post</li>
+                        <li>Return Policy</li>
+                        <li>Join Affiliate</li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3>Follow us</h3>
+                    <ul>
+                        <li>Facebook</li>
+                        <li>Twitter</li>
+                        <li>Instagram</li>
+                        <li>YouTube</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">Copyright &copy; 2021 - Red Store</p>
+        </div>
+    </div>
+</body>
+
+<script src="script.js"></script>
+
+</html>
