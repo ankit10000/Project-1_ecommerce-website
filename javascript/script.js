@@ -115,10 +115,122 @@ function showLogout() {
 
 window.reload = showLogout();
 
+
+async function fetchProducts() {
+    const response = await fetch('http://localhost:3001/api/product/getproducts');
+    const products = await response.json();
+    const productList = document.getElementById('product-list');
+    if (productList) {
+        productList.innerHTML = products.map(product => `
+            <div class="col-4">
+                <img src="${product.image}" alt="${product.name}">
+                <h4>${product.name}</h4>
+                <div class="rating">
+                    ${[...Array(product.rating)].map(() => '<i class="fas fa-star"></i>').join('')}
+                    ${[...Array(5 - product.rating)].map(() => '<i class="far fa-star"></i>').join('')}
+                </div>
+                <p>₹${product.price}</p>
+                <button onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
+            </div>
+        `).join('');
+    }
+
+    const featuredProducts = document.getElementById('featured-products');
+    if (featuredProducts) {
+        featuredProducts.innerHTML = products.map(product => `
+        <div class="col-4">
+            <img src="${product.image}" alt="${product.name}">
+            <h4>${product.name}</h4>
+            <div class="rating">
+                ${[...Array(product.rating)].map(() => '<i class="fas fa-star"></i>').join('')}
+                ${[...Array(5 - product.rating)].map(() => '<i class="far fa-star"></i>').join('')}
+            </div>
+            <p>₹${product.price}</p>
+            <button onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
+        </div>
+    `).join('');
+    }
+}
+
+
+// Function to fetch and display featured products
+// async function fetchFeaturedProducts() {
+//     const response = await fetch('http://localhost:3001/api/product/getproducts');
+//     const products = await response.json();
+//     const featuredProducts = document.getElementById('featured-products');
+
+//     featuredProducts.innerHTML = products.map(product => `
+//         <div class="col-4">
+//             <img src="${product.image}" alt="${product.name}">
+//             <h4>${product.name}</h4>
+//             <div class="rating">
+//                 ${[...Array(product.rating)].map(() => '<i class="fas fa-star"></i>').join('')}
+//                 ${[...Array(5 - product.rating)].map(() => '<i class="far fa-star"></i>').join('')}
+//             </div>
+//             <p>₹${product.price}</p>
+//             <button onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
+//         </div>
+//     `).join('');
+// }
+
+// Call fetchFeaturedProducts when the document is loaded
+// document.addEventListener('DOMContentLoaded', fetchFeaturedProducts);
+
 document.addEventListener('DOMContentLoaded', () => {
     updateCartCount();
     if (document.getElementById('cartItems')) {
         displayCartItems();
     }
+    fetchProducts();
+    // fetchFeaturedProducts();
+    const ctxSales = document.getElementById('salesChart').getContext('2d');
+const salesChart = new Chart(ctxSales, {
+    type: 'line',
+    data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+        datasets: [{
+            label: 'Sales',
+            data: [1200, 1900, 3000, 5000, 2300, 3400],
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1,
+            fill: true
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+// Customer Growth Chart
+const ctxCustomer = document.getElementById('customerChart').getContext('2d');
+const customerChart = new Chart(ctxCustomer, {
+    type: 'bar',
+    data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+        datasets: [{
+            label: 'Customers',
+            data: [50, 100, 150, 200, 250, 300],
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
 });
 

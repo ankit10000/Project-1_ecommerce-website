@@ -141,6 +141,25 @@ app.get('/api/orders', authenticateToken, (req, res) => {
     });
 });
 
+
+app.post('/api/product/addproduct', (req, res) => {
+    let product = {name: req.body.name, price: req.body.price, rating: req.body.rating, image: req.body.image};
+    let sql = 'INSERT INTO products SET ?';
+    pool.query(sql, product, (err, result) => {
+        if (err) throw err;
+        res.send('Product added...');
+    });
+});
+
+// Get Products
+app.get('/api/product/getproducts', (req, res) => {
+    let sql = 'SELECT * FROM products';
+    pool.query(sql, (err, results) => {
+        if (err) throw err;
+        res.json(results);
+    });
+});
+
 // Start the server
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);

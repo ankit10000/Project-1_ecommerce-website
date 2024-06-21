@@ -895,3 +895,12 @@ button {
     text-align: center;
     background-color: black;
   }
+  .col-2 img {
+    max-width: 100%;
+    padding: 100px 90px;
+
+  }
+  .small-container{
+    margin-top: 50px;
+    margin-bottom: 100px;
+  }
