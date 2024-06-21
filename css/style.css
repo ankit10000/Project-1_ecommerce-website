@@ -890,3 +890,8 @@ button {
     left: -10px;
     font-size: 12px;
   }
+
+  .cart-page table tr th{
+    text-align: center;
+    background-color: black;
+  }
