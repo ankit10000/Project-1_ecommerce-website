@@ -160,6 +160,23 @@ app.get('/api/product/getproducts', (req, res) => {
     });
 });
 
+
+app.post('/api/submit-contact', (req, res) => {
+    const { name, email, message } = req.body;
+
+    if (!name || !email || !message) {
+        return res.status(400).send('All fields are required');
+    }
+
+    const query = 'INSERT INTO contacts (name, email, message) VALUES (?, ?, ?)';
+    pool.query(query, [name, email, message], (err) => {
+        if (err) {
+            return res.status(500).send('Database error');
+        }
+        res.status(200).send('Form submitted successfully');
+    });
+});
+
 // Start the server
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
