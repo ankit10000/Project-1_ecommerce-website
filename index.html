@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Red Store</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        #logout {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -21,7 +26,8 @@
                     <li><a href="#">About</a></li>
                     <li><a href="#">Contact</a></li>
                     <li><a href="account.html">Account</a></li>
-                    <li><a href="orders.html">Orders</a></li>
+                    <li><a href="orders.html">Orders</a></li> <!-- Added Orders button -->
+                    <li id="logout"><a href="index.html" id="a" onclick="logout()">Logout</a></li>
                 </ul>
             </nav>
             <a href="cart.html">
@@ -112,7 +118,8 @@
                 </div>
                 <div class="footer-col-2">
                     <img src="https://i.ibb.co/j3FNGj7/logo-white.png" alt="RedStore Logo White">
-                    <p>Our Purpose Is To Sustainably Make the Pleasure and Benefits of Sports Accessible to the Many.</p>
+                    <p>Our Purpose Is To Sustainably Make the Pleasure and Benefits of Sports Accessible to the Many.
+                    </p>
                 </div>
                 <div class="footer-col-3">
                     <h3>Useful Links</h3>
@@ -137,9 +144,9 @@
             <p class="copyright">Copyright &copy; 2021 - Red Store</p>
         </div>
     </div>
-
-    <script src="cart.js"></script>
     <script src="script.js"></script>
+
+
 </body>
 
 </html>
