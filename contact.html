@@ -180,7 +180,7 @@
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
 
-            fetch('http://http://summer.mysql.database.azure.com/:3002/api/submit-contact', {
+            fetch('http://localhost:8080/api/submit-contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
