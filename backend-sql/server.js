@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 // const bcrypt = require('bcryptjs');
 const cors = require('cors');
 const app = express();
-const port = 3001;
+const port = 3002;
 const secretKey = 'helloiamankit'; // Replace with your secret key
 
 // Create a MySQL connection pool

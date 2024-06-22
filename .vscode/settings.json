@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/e7ccb7c9-7153-4e99-b952-3172e1099599/resourceGroups/red-shop_group/providers/Microsoft.Web/sites/red-shop",
+    "appService.deploySubpath": "backend-sql"
+}
