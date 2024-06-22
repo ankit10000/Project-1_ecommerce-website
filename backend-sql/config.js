@@ -1,5 +1,5 @@
 module.exports = {
-    // host: 'localhost',
+    // host: 'http://summer.mysql.database.azure.com/',
     // port: 3307,
     // database: 'summer',
     // user: 'root',

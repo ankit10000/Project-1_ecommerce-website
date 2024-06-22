@@ -127,7 +127,7 @@
             const password = document.getElementById('loginPassword').value;
 
             try {
-                const response = await fetch('http://localhost:3002/api/user/login', {
+                const response = await fetch('http://http://summer.mysql.database.azure.com/:3002/api/user/login', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email, password })
@@ -155,7 +155,7 @@
             const active = document.getElementById('registerActive').value;
 
             try {
-                const response = await fetch('http://localhost:3002/api/user/signup', {
+                const response = await fetch('http://http://summer.mysql.database.azure.com/:3002/api/user/signup', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ name, email, contact, password, address, active })
