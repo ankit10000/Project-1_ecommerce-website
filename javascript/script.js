@@ -106,10 +106,29 @@ function removeCartItem(productName) {
 }
 
 
+
+function showaccount() {
+    if (getCookie('token')) {
+        document.getElementById('account').style.display = 'contents';
+        document.getElementById('a').style.marginRight = '10px';
+    }
+}
+
+window.reload = showaccount();
+
+function showorders() {
+    if (getCookie('token')) {
+        document.getElementById('o').style.marginRight = '10px';
+        document.getElementById('orders').style.display = 'contents';
+    }
+}
+
+window.reload = showorders();
+
 function showLogout() {
     if (getCookie('token')) {
         document.getElementById('logout').style.display = 'contents';
-        document.getElementById('a').style.marginRight = '10px';
+        document.getElementById('l').style.marginRight = '10px';
     }
 }
 
@@ -117,7 +136,7 @@ window.reload = showLogout();
 
 
 async function fetchProducts() {
-    const response = await fetch('http://localhost:3000/api/product/getproducts');
+    const response = await fetch('https://reshopapi.onrender.com/api/product/getproducts');
     const products = await response.json();
     const productList = document.getElementById('product-list');
     if (productList) {
@@ -155,7 +174,7 @@ async function fetchProducts() {
 
 // Function to fetch and display featured products
 // async function fetchFeaturedProducts() {
-//     const response = await fetch('http://localhost:3000/api/product/getproducts');
+//     const response = await fetch('https://reshopapi.onrender.com/api/product/getproducts');
 //     const products = await response.json();
 //     const featuredProducts = document.getElementById('featured-products');
 

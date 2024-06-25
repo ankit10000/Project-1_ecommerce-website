@@ -91,9 +91,9 @@
                     <li><a href="product.html">Products</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="contact.html">Contact</a></li>
-                    <li><a href="account.html">Account</a></li>
-                    <li><a href="orders.html">Orders</a></li>
-                    <li id="logout"><a href="index.html" id="a" onclick="logout()">Logout</a></li>
+                    <li id="account"><a href="account.html" id="a" onclick="account()">Account</a></li>
+                    <li id="orders"><a href="orders.html" id="o" onclick="orders()">Orders</a></li>
+                    <li id="logout"><a href="index.html" id="l" onclick="logout()">Logout</a></li>
                 </ul>
             </nav>
             <a href="cart.html">
@@ -192,7 +192,7 @@
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
 
-            fetch('http://localhost:3000/api/submit-contact', {
+            fetch('https://reshopapi.onrender.com/api/submit-contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
