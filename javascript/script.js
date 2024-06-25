@@ -117,7 +117,7 @@ window.reload = showLogout();
 
 
 async function fetchProducts() {
-    const response = await fetch('https://reshopapi.onrender.com/api/product/getproducts');
+    const response = await fetch('http://localhost:3000/api/product/getproducts');
     const products = await response.json();
     const productList = document.getElementById('product-list');
     if (productList) {
@@ -155,7 +155,7 @@ async function fetchProducts() {
 
 // Function to fetch and display featured products
 // async function fetchFeaturedProducts() {
-//     const response = await fetch('https://reshopapi.onrender.com/api/product/getproducts');
+//     const response = await fetch('http://localhost:3000/api/product/getproducts');
 //     const products = await response.json();
 //     const featuredProducts = document.getElementById('featured-products');
 

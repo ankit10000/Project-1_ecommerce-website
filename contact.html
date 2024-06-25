@@ -172,6 +172,18 @@
             <p class="copyright">Copyright &copy; 2021 - Red Store</p>
         </div>
     </div>
+    <script>
+        var MenuItems = document.getElementById('MenuItems');
+            MenuItems.style.maxHeight = '0px';
+    
+            function menutoggle() {
+                if (MenuItems.style.maxHeight == '0px') {
+                    MenuItems.style.maxHeight = '200px';
+                } else {
+                    MenuItems.style.maxHeight = '0px';
+                }
+            }
+    </script>
     <script src="./javascript/script.js"></script>
     <script>
         document.getElementById('contactForm').addEventListener('submit', function (e) {
@@ -180,7 +192,7 @@
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
 
-            fetch('https://reshopapi.onrender.com/api/submit-contact', {
+            fetch('http://localhost:3000/api/submit-contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

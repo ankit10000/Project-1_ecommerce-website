@@ -167,10 +167,10 @@
                 flex-direction: column;
             }
 
-            .navbar {
+            /* .navbar {
                 flex-direction: column;
                 align-items: flex-start;
-            }
+            } */
 
             nav ul {
                 flex-direction: column;
@@ -180,7 +180,7 @@
             nav ul li {
                 display: block;
                 margin-right: 0;
-                text-align: left;
+                /* text-align: left; */
                 padding: 10px 0;
             }
 
@@ -321,7 +321,18 @@
         </div>
     </div>
 
+<script>
+    var MenuItems = document.getElementById('MenuItems');
+        MenuItems.style.maxHeight = '0px';
 
+        function menutoggle() {
+            if (MenuItems.style.maxHeight == '0px') {
+                MenuItems.style.maxHeight = '200px';
+            } else {
+                MenuItems.style.maxHeight = '0px';
+            }
+        }
+</script>
     <script src="./javascript/script.js"></script>
 </body>
 

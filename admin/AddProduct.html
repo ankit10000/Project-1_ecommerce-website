@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Manage Products</title>
+</head>
+<body>
+    <div class="container" style=" left:10px ; position: fixed; z-index: 1; top: 10px; background-color: red; width: 100%;">
+        <div class="navbar">
+            <div class="logo">
+                <h1>Admin Panel</h1>
+            </div>
+            <nav>
+                <ul id="MenuItems" >
+                    <li><a href="#all">All Products</a></li>
+                    <li><a href="#add">Add Product</a></li>
+                    <li><a href="#update">Update Product</a></li>
+                    <li><a href="#delete">Delete Product</a></li>
+                    <!-- <li id="logout"><a href="index.html" id="a" onclick="logout()">Logout</a></li> -->
+                </ul>
+            </nav>
+            <img src="https://i.ibb.co/6XbqwjD/menu.png" alt="Menu Icon" class="menu-icon" onclick="menutoggle()" />
+        </div>
+    </div>
+    <div id="all"></div>
+    <div class="main" style="margin-top: 100px;">
+        <div class="small-container login-page">
+            <h2 class="title">All Products</h2>
+            <table id="productsTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Rating</th>
+                        <th>Image URL</th>
+                        <th>Image</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Product rows will be added here dynamically -->
+                </tbody>
+            </table>
+            <div id="add"></div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="small-container login-page">
+            <div class="form-container1">
+                <h2 class="title">Add Product</h2>
+                <form id="addProduct">
+                    <input type="text" id="productName" placeholder="Product Name" required>
+                    <input type="text" id="productPrice" placeholder="Product Price" required>
+                    <input type="text" id="productRating" placeholder="Product Rating" required>
+                    <input type="text" id="productImage" placeholder="Product Image" required>
+                    <button type="submit">Add Product</button>
+                </form>
+            </div>
+            <div id="update"></div>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="small-container login-page">
+            <div class="form-container1">
+                <h2 class="title">Update Product</h2>
+                <form id="updateProduct">
+                    <input type="text" id="updateProductId" placeholder="Product ID" required>
+                    <input type="text" id="updateProductName" placeholder="Product Name" required>
+                    <input type="text" id="updateProductPrice" placeholder="Product Price" required>
+                    <input type="text" id="updateProductRating" placeholder="Product Rating" required>
+                    <input type="text" id="updateProductImage" placeholder="Product Image" required>
+                    <button type="submit">Update Product</button>
+                </form>
+            </div>
+            <div id="delete"></div>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="small-container login-page">
+            <div class="form-container1">
+                <h2 class="title">Delete Product</h2>
+                <form id="deleteProduct">
+                    <input type="text" id="deleteProductId" placeholder="Product ID" required>
+                    <button type="submit">Delete Product</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <script>
+        var MenuItems = document.getElementById('MenuItems');
+        MenuItems.style.maxHeight = '0px';
+
+        function menutoggle() {
+            if (MenuItems.style.maxHeight == '0px') {
+                MenuItems.style.maxHeight = '200px';
+            } else {
+                MenuItems.style.maxHeight = '0px';
+            }
+        }
+        // Fetch all products and display them in a table
+        async function fetchProducts() {
+            try {
+                const response = await fetch('http://localhost:3000/api/product/getproducts');
+                const products = await response.json();
+                const productsTableBody = document.getElementById('productsTable').getElementsByTagName('tbody')[0];
+
+                // Clear any existing rows
+                productsTableBody.innerHTML = '';
+
+                products.forEach(product => {
+                    const row = productsTableBody.insertRow();
+                    row.insertCell(0).innerText = product.id;
+                    row.insertCell(1).innerText = product.name;
+                    row.insertCell(2).innerText = product.price;
+                    row.insertCell(3).innerText = product.rating;
+                    row.insertCell(4).innerHTML = `<img src="${product.image}" alt="${product.name}" width="50">`;
+                    row.insertCell(4).innerHTML = product.image;
+                });
+            } catch (error) {
+                console.error('Error fetching products:', error);
+                alert('An error occurred while fetching products.');
+            }
+        }
+
+        // Add Product
+        document.getElementById('addProduct').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const productName = document.getElementById('productName').value;
+            const productPrice = document.getElementById('productPrice').value;
+            const productRating = document.getElementById('productRating').value;
+            const productImage = document.getElementById('productImage').value;
+
+            const product = {
+                name: productName,
+                price: productPrice,
+                rating: productRating,
+                image: productImage
+            };
+
+            try {
+                const response = await fetch('http://localhost:3000/api/product/addproduct', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(product)
+                });
+
+                if (response.ok) {
+                    alert('Product added successfully!');
+                    document.getElementById('addProduct').reset();
+                    fetchProducts(); // Refresh the products list
+                } else {
+                    alert('Failed to add product.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred while adding the product.');
+            }
+        });
+
+        // Update Product
+        document.getElementById('updateProduct').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const productId = document.getElementById('updateProductId').value;
+            const productName = document.getElementById('updateProductName').value;
+            const productPrice = document.getElementById('updateProductPrice').value;
+            const productRating = document.getElementById('updateProductRating').value;
+            const productImage = document.getElementById('updateProductImage').value;
+
+            const product = {
+                name: productName,
+                price: productPrice,
+                rating: productRating,
+                image: productImage
+            };
+
+            try {
+                const response = await fetch(`http://localhost:3000/api/product/update/${productId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(product)
+                });
+
+                if (response.ok) {
+                    alert('Product updated successfully!');
+                    document.getElementById('updateProduct').reset();
+                    fetchProducts(); // Refresh the products list
+                } else {
+                    alert('Failed to update product.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred while updating the product.');
+            }
+        });
+
+        // Delete Product
+        document.getElementById('deleteProduct').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const productId = document.getElementById('deleteProductId').value;
+
+            try {
+                const response = await fetch(`http://localhost:3000/api/product/delete/${productId}`, {
+                    method: 'DELETE'
+                });
+
+                if (response.ok) {
+                    alert('Product deleted successfully!');
+                    document.getElementById('deleteProduct').reset();
+                    fetchProducts(); // Refresh the products list
+                } else {
+                    alert('Failed to delete product.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred while deleting the product.');
+            }
+        });
+
+        // Fetch products when the page loads
+        document.addEventListener('DOMContentLoaded', fetchProducts);
+    </script>
+</body>
+</html>
