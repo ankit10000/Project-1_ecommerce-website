@@ -1,36 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Orders - Red-Shop</title>
-  <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="./css/cart.css">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
   <div class="container">
     <div class="navbar">
-        <div class="logo">
-            <a href="index.html"><img src="/image/logo-no-background.png" alt="RedStore Logo" width="125px"></a>
-        </div>
-        <nav>
-            <ul id="MenuItems">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="product.html">Products</a></li>
-              <li><a href="about.html">About</a></li>
-              <li><a href="contact.html">Contact</a></li>
-              <li id="account"><a href="account.html" id="a" onclick="account()">Account</a></li>
-                    <li id="orders"><a href="orders.html" id="o" onclick="orders()">Orders</a></li>
-                    <li id="logout"><a href="index.html" id="l" onclick="logout()">Logout</a></li>
-            </ul>
-        </nav>
-        <a href="cart.html">
-            <img src="https://i.ibb.co/PNjjx3y/cart.png" alt="Cart" width="30px" height="30px">
-            <span id="cartCount" class="cart-count">0</span>
-        </a>
-        <img src="https://i.ibb.co/6XbqwjD/menu.png" alt="Menu Icon" class="menu-icon" onclick="menutoggle()">
+      <div class="logo">
+        <a href="index.html"><img src="/image/logo-no-background.png" alt="RedStore Logo" width="125px"></a>
+      </div>
+      <nav>
+        <ul id="MenuItems">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="product.html">Products</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li id="account"><a href="account.html" id="a" onclick="account()">Account</a></li>
+          <li id="orders"><a href="orders.html" id="o" onclick="orders()">Orders</a></li>
+          <li id="logout"><a href="index.html" id="l" onclick="logout()">Logout</a></li>
+        </ul>
+      </nav>
+      <a href="cart.html">
+        <img src="https://i.ibb.co/PNjjx3y/cart.png" alt="Cart" width="30px" height="30px">
+        <span id="cartCount" class="cart-count">0</span>
+      </a>
+      <a href="login.html" id="hideLoginIcon">
+        <span class="material-symbols-outlined">
+          account_circle
+        </span>
+      </a>
+      <img src="https://i.ibb.co/6XbqwjD/menu.png" alt="Menu Icon" class="menu-icon" onclick="menutoggle()">
     </div>
-</div>
+  </div>
 
   <div class="small-container orders-page">
     <h2>Your Orders</h2>
@@ -113,8 +122,8 @@
       document.cookie = name + "=" + (value || "") + expires + "; path=/";
     }
 
-    function deleteCookie(name) { 
-      document.cookie = name + '=; Max-Age=-99999999;';  
+    function deleteCookie(name) {
+      document.cookie = name + '=; Max-Age=-99999999;';
     }
 
     function logout() {
@@ -183,4 +192,5 @@
   </script>
   <script src="./javascript/script.js"></script>
 </body>
+
 </html>

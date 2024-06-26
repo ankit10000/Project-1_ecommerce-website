@@ -190,6 +190,7 @@
   
   .col-2 .offer-img {
     padding: 50px;
+    border-radius: 70px;
   }
   
   small {
@@ -941,4 +942,8 @@ button {
   .small-container{
     margin-top: 50px;
     margin-bottom: 100px;
+  }
+  .material-symbols-outlined {
+    padding-top: 5px;
+    font-size: 38px;
   }
