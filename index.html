@@ -9,7 +9,14 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+.footer{
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            
+        }
         /* Hero Banner */
         .hero {
             height: 90vh;
@@ -45,7 +52,7 @@
             animation: fadeInUp 1s;
         }
 
-        .hero-text .btn {
+        /* .hero-text .btn {
             background-color: #ff523b;
             border: none;
             padding: 10px 20px;
@@ -53,7 +60,7 @@
             text-transform: uppercase;
             cursor: pointer;
             animation: fadeInUp 1s;
-        }
+        } */
 
         /* Keyframes for animation */
         @keyframes fadeInDown {
@@ -204,7 +211,7 @@
     <div class="container">
         <div class="navbar">
             <div class="logo">
-                <a href="index.html"><img src="./image/logo-no-background.png" alt="RedShop Logo" width="125px"></a>
+                <a href="index.html"><img src="/image/logo.jpeg" alt="RedShop Logo" width="125px"></a>
             </div>
             <nav>
                 <ul id="MenuItems">
@@ -212,7 +219,7 @@
                     <li><a href="product.html">Products</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="contact.html">Contact</a></li>
-                    <li id="account"><a href="account.html" id="a" onclick="account()">Account</a></li>
+                    <li id="account"><a href="AccountAdmin.html" id="a" onclick="account()">Account</a></li>
                     <li id="orders"><a href="orders.html" id="o" onclick="orders()">Orders</a></li>
                     <li id="logout"><a href="index.html" id="l" onclick="logout()">Logout</a></li>
                 </ul>
@@ -293,16 +300,9 @@
     <div class="footer">
         <div class="container">
             <div class="row">
-                <div class="footer-col-1">
-                    <h3>Download Our App</h3>
-                    <p>Download App for Android and iOS mobile phone.</p>
-                    <div class="app-logo">
-                        <img src="https://i.ibb.co/KbPTYYQ/play-store.png" alt="Google Play Store">
-                        <img src="https://i.ibb.co/hVM4X2p/app-store.png" alt="Apple App Store">
-                    </div>
-                </div>
+                
                 <div class="footer-col-2">
-                    <img src="/image/logo-no-background.png" alt="RedShop Logo White">
+                    <img src="/image/logo.jpeg" alt="RedShop Logo White">
                     <p>Our Purpose Is To Sustainably Make the Pleasure and Benefits of Sports Accessible to the Many.
                     </p>
                 </div>
@@ -315,18 +315,21 @@
                         <li>Join Affiliate</li>
                     </ul>
                 </div>
-                <div class="footer-col-4">
-                    <h3>Follow us</h3>
-                    <ul>
-                        <li>Facebook</li>
-                        <li>Twitter</li>
-                        <li>Instagram</li>
-                        <li>YouTube</li>
-                    </ul>
+                <div class="contact-info footer-col-4">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 233, Vivek Vihar, Mansarovar</p>
+                    <p><i class="fas fa-phone"></i> +91 9636819197</p>
+                    <p><i class="fas fa-envelope"></i> support@redshop.com</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
             </div>
             <hr>
-            <p class="copyright">Copyright &copy; 2021 - Red-Shop</p>
+            <p class="copyright">Copyright &copy; 2024 - Red-Shop</p>
         </div>
     </div>
 
