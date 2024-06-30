@@ -143,7 +143,14 @@ app.get('/api/orders', authenticateToken, (req, res) => {
     });
 });
 
-
+app.get('/api/ordersAdmin', (req, res) => {
+    pool.query('SELECT * FROM orders', (error, results) => {
+        if (error) {
+            return res.status(500).json({ error: error.message });
+        }
+        res.json(results);
+    });
+});
 app.post('/api/product/addproduct', (req, res) => {
     let product = {name: req.body.name, price: req.body.price, rating: req.body.rating, image: req.body.image};
     let sql = 'INSERT INTO products SET ?';
