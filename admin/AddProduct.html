@@ -159,7 +159,7 @@ function setCookieAdmin(name, value, days) {
                         row.insertCell(1).innerText = user.name;
                         row.insertCell(2).innerText = user.email;
                         row.insertCell(3).innerText = user.contact;
-                        row.insertCell(4).innerHTML = `<input type="text" id="password" value="${user.password}" required disabled/>`;
+                        row.insertCell(4).innerHTML = `<input type="password" id="password" value="${user.password}" required disabled/>`;
                         row.insertCell(5).innerHTML = user.address;
                         row.insertCell(6).innerHTML = user.active == 1 ? 'Inactive' : 'Active';
                     });
