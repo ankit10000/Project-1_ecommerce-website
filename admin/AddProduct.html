@@ -11,13 +11,14 @@
 
 <body>
     <div class="container"
-        style=" left:10px ; position: fixed; z-index: 1; top: 10px; background-color: red; width: 100%;">
+        style="position: fixed; z-index: 1; top: 0px;  width: 100%;">
         <div class="navbar">
             <div class="logo">
-                <h1>Admin Panel</h1>
+                <h1 style="color: aliceblue; text-decoration: underline;">Admin Panel</h1>
             </div>
             <nav>
                 <ul id="MenuItems">
+                    <li><a href="#alluser">All Users</a></li>
                     <li><a href="#all">All Products</a></li>
                     <li><a href="#add">Add Product</a></li>
                     <li><a href="#update">Update Product</a></li>
@@ -27,7 +28,7 @@
             </nav>
         </div>
     </div>
-    <div id="all"></div>
+    <div id="alluser"></div>
     <div class="main" style="margin-top: 100px;">
         <div class="small-container login-page">
             <h2 class="title">All Users</h2>
@@ -47,7 +48,7 @@
                     <!-- Product rows will be added here dynamically -->
                 </tbody>
             </table>
-            <div id="add"></div>
+            <div id="all"></div>
         </div>
     </div>
     <div class="main" style="margin-top: 100px;">
@@ -117,10 +118,30 @@
     </div>
 
 
-    <script src="../javascript/script.js"></script>
+    <!-- <script src="../javascript/script.js"></script> -->
     <script>
+function getCookieAdmin(name) {
+    let cookieArr = document.cookie.split(";");
+    for (let i = 0; i < cookieArr.length; i++) {
+        let cookiePair = cookieArr[i].split("=");
+        if (name == cookiePair[0].trim()) {
+            return decodeURIComponent(cookiePair[1]);
+        }
+    }
+    return null;
+}
 
-        var token = getCookie('token');
+
+function setCookieAdmin(name, value, days) {
+    let expires = "";
+    if (days) {
+        let date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+        var token = getCookieAdmin('tokenadmin');
         if (token) {
 
 
@@ -138,7 +159,7 @@
                         row.insertCell(1).innerText = user.name;
                         row.insertCell(2).innerText = user.email;
                         row.insertCell(3).innerText = user.contact;
-                        row.insertCell(4).innerHTML = `<input type="password" id="password" value="${user.password}" required disabled/>`;
+                        row.insertCell(4).innerHTML = `<input type="text" id="password" value="${user.password}" required disabled/>`;
                         row.insertCell(5).innerHTML = user.address;
                         row.insertCell(6).innerHTML = user.active == 1 ? 'Inactive' : 'Active';
                     });
@@ -281,7 +302,7 @@
             try {
                 const log = confirm('Are you sure you want to logout?');
                 if (log == true) {
-                    document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                    document.cookie = 'tokenadmin=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
                 }
 
             } catch (error) {

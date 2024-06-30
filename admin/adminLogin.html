@@ -82,7 +82,7 @@
     <script>
 
         function redirectToLoginIfNotLoggedIn() {
-            if (getCookie('token')) {
+            if (getCookie('tokenadmin')) {
                 window.location.href = 'AddProduct.html';
             }
         }
@@ -111,13 +111,13 @@
             const date = new Date();
             date.setTime(date.getTime() + (hours * 60 * 60 * 1000));
             const expires = "expires=" + date.toUTCString();
-            document.cookie = "token=" + token + ";" + expires + ";path=/";
+            document.cookie = "tokenadmin=" + token + ";" + expires + ";path=/";
         };
 
         document.getElementById('loginForm').addEventListener('submit', handleLogin);
 
     </script>
-    <script src="../javascript/script.js"></script>
+    <!-- <script src="../javascript/script.js"></script> -->
 </body>
 
 </html>
