@@ -137,13 +137,12 @@
                 body: JSON.stringify({ name, email, message })
             })
                 .then(response => {
-                    // console.log(response.ok)
-                    if (response.status === 200) {
+                    if (response.ok) {
                         alert('Thank you for contacting us!');
                         document.getElementById('contactForm').reset();
                         window.location.replace("contact.html");
                     } else {
-                        alert('There was an issue with your submission. Please try again.');
+                        throw new Error('There was an issue with your submission. Please try again.');
                     }
                 })
                 .catch(error => {
