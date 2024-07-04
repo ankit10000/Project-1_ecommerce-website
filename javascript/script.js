@@ -142,7 +142,7 @@ window.reload = showLogout();
 
 
 async function fetchProducts() {
-    const response = await fetch('http://localhost:3000/api/product/getproducts');
+    const response = await fetch('https://reshopapi.onrender.com/api/product/getproducts');
     const products = await response.json();
 
     // Limit to the first 6 products
