@@ -104,7 +104,7 @@ account_circle
                 </div>
             </div>
             <hr>
-            <p class="copyright">Copyright &copy; 2024 - Red-Shop</p>
+            <p class="copyright">Red-Shop - 2024</p>
         </div>
     </div>
     <script src="./javascript/script.js"></script>
@@ -244,7 +244,7 @@ account_circle
                 return;
             }else{
                 try {
-                const response = await fetch('https://reshopapi.onrender.com/api/order', {
+                const response = await fetch('http://localhost:3000/api/order', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

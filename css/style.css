@@ -13,8 +13,8 @@
   display: none;
 }
 body {
-  font-family:Arial, Helvetica, sans-serif;
-  font-style:oblique;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: oblique;
   font-weight: 700;
 }
 
@@ -63,8 +63,9 @@ p {
 .row {
   display: flex;
   align-items: center;
+  /* text-align: center; */
   flex-wrap: wrap;
-  justify-content: space-around;
+  /* justify-content: space-around; */
 }
 
 .col-2 {
@@ -94,7 +95,7 @@ p {
 }
 
 .btn:hover {
-  background: #0051b4;
+  background: #00377a;
 }
 
 .header {
@@ -130,8 +131,9 @@ p {
   height: 400px;
   flex-basis: 25%;
   padding: 10px;
-  min-width: 200px;
+  min-width: 270px;
   margin-bottom: 50px;
+  text-align: center;
   transition: transform 0.5s;
 }
 
@@ -139,17 +141,16 @@ p {
   border-radius: 10px;
   width: 100%;
   height: 280px;
-  transition: transform .2s;
-  padding-bottom: 10px;
+  transition: transform 0.2s;
+  margin-bottom: 10px;
 }
 .col-4 img:hover {
   transform: scale(1.1);
-  
 }
 
 .title {
   text-align: center;
-  margin: 0 auto 80px;
+  /* margin: 0 auto 80px; */
   position: relative;
   line-height: 60px;
   color: #000000;
@@ -201,7 +202,7 @@ h4 {
 }
 
 small {
-  color: #ffffff;
+  color: #000000;
 }
 
 /* testimonial */
@@ -372,7 +373,7 @@ ul {
 
 .row-2 {
   justify-content: space-between;
-  margin: 100px auto 50px;
+  /* margin: 100px auto 50px; */
 }
 
 select {
@@ -556,7 +557,6 @@ th:last-child {
   transition: transform 1s;
 }
 
-
 .form-container span {
   font-weight: bold;
   padding: 0 10px;
@@ -624,11 +624,27 @@ form a {
 @media only screen and (max-width: 600px) {
   .row {
     text-align: center;
+    
+  }
+  .row-2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  form{
+    width: 80%;
+    margin: auto;
   }
   .col-2,
   .col-3,
   .col-4 {
-    flex-basis: 100%;
+    flex-basis: 80%;
+        margin: auto;
+  }
+  .filter {
+    width: 80% !important;
+    margin-top: 10px;
   }
 
   .single-product .row {
@@ -659,10 +675,11 @@ button {
   margin: auto;
   width: 100%;
   border-radius: 10px;
+  transition: background 0.5s;
 }
 
 button:hover {
-  background-color: #0051b4;
+  background-color: #00377a;
 }
 
 /* User Registration Form Styles */
@@ -694,7 +711,8 @@ button:hover {
   border-collapse: collapse;
 }
 
-.cart-page table th, .cart-page table td {
+.cart-page table th,
+.cart-page table td {
   border: 1px solid #5a5a5a;
   padding: 8px;
   text-align: center;
@@ -743,7 +761,8 @@ button:hover {
   border-collapse: collapse;
 }
 
-.cart-page table th, .cart-page table td {
+.cart-page table th,
+.cart-page table td {
   border: 1px solid #5a5a5a;
   padding: 8px;
   text-align: center;
@@ -798,7 +817,8 @@ button:hover {
   margin: 10px 0 5px;
 }
 
-.checkout-page input, .checkout-page select {
+.checkout-page input,
+.checkout-page select {
   padding: 10px;
   margin: 5px 0 20px;
   font-size: 16px;
@@ -875,7 +895,7 @@ form button {
 form button:hover {
   background-color: #0051b4;
 }
-  /* Order Confirmation Page Styles */
+/* Order Confirmation Page Styles */
 .order-confirmation-page {
   margin: 80px auto;
   width: 80%;
@@ -892,7 +912,8 @@ form button:hover {
   margin-bottom: 40px;
 }
 
-.order-confirmation-page table th, .order-confirmation-page table td {
+.order-confirmation-page table th,
+.order-confirmation-page table td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: center;
@@ -923,7 +944,8 @@ form button:hover {
   border-collapse: collapse;
 }
 
-.order table th, .order table td {
+.order table th,
+.order table td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: center;
@@ -943,18 +965,17 @@ form button:hover {
   font-size: 12px;
 }
 
-.cart-page table tr th{
+.cart-page table tr th {
   text-align: center;
   background-color: #5a5a5a;
 }
 .col-2 img {
   max-width: 100%;
   padding: 100px 90px;
-
 }
-.small-container{
+.small-container1 {
   margin-top: 50px;
-  margin-bottom: 100px;
+  /* margin-bottom: 100px; */
 }
 .material-symbols-outlined {
   padding-top: 5px;
@@ -966,14 +987,10 @@ form button:hover {
   color: #000000;
 }
 
-
-
-
 .footer {
   position: relative;
   bottom: 0;
   width: 100%;
-
 }
 
 /* Contact Page Styles */
@@ -985,6 +1002,8 @@ form button:hover {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  width: 80%;
+  margin: auto;
 }
 
 .contact-form {
@@ -1028,19 +1047,67 @@ form button:hover {
   font-size: 18px;
 }
 
-
-
 @media only screen and (max-width: 768px) {
   .contact-page .row {
-      flex-direction: column;
+    flex-direction: column;
+        margin: auto;
+        width: 100%;
+        place-items: center;
   }
 
   .contact-form,
   .contact-info {
-      flex-basis: 100%;
+    flex-basis: 100%;
   }
 }
 
-.container .navbar .logo a img{
+.container .navbar .logo a img {
   border-radius: 5px;
+}
+.filter {
+  /* margin-top: 30px; */
+  width: 20%;
+  /* margin-left: auto; */
+}
+.filter input {
+  border: 1px solid #0061d9;
+  border-radius: 10px;
+  width: 50%;
+  padding: 5px;
+  margin: 5px 0 20px;
+  font-size: 12px;
+}
+.filter .filter-inputs button {
+  width: 50%;
+  padding: 5px;
+  position: relative;
+  top: -8px;
+}
+.sort {
+  /* text-align: end; */
+}
+.main_all {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+.fl_label_price {
+  margin-top: 10px;
+}
+.filter-inputs {
+  display: flex;
+  /* justify-content: space-between; */
+}
+.sort_filter {
+  display: contents;
+}
+.categories .small-container .row{
+  justify-content: space-between;
+}
+#featured-products{
+  margin-top: 50px;
+}
+.about-page{
+  margin-top: 110px;
+  margin-bottom: 140px;
 }

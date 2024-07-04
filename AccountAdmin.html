@@ -104,7 +104,7 @@
                 </div>
             </div>
             <hr>
-            <p class="copyright">Copyright &copy; 2024 - Red-Shop</p>
+            <p class="copyright">Red-Shop - 2024</p>
         </div>
     </div>
     <script>
@@ -123,7 +123,7 @@
     <script>
         var token = getCookie('token');
         if (token) {
-            fetch('https://reshopapi.onrender.com/api/user-details', {
+            fetch('http://localhost:3000/api/user-details', {
                 method: 'GET',
                 headers: {
                     'Authorization': 'Bearer ' + token
@@ -150,7 +150,7 @@
             const address = document.getElementById('getAddress').value;
             const userId = document.getElementById('getId').value;
 
-            fetch(`https://reshopapi.onrender.com/api/user/update/${userId}`, {
+            fetch(`http://localhost:3000/api/user/update/${userId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
