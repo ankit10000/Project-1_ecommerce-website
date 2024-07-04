@@ -140,23 +140,33 @@ function redirectToLoginIfNotLoggedIn() {
             const password = document.getElementById('loginPassword').value;
 
             try {
-                const response = await fetch('https://reshopapi.onrender.com/api/user/login', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, password })
-                });
-                const data = await response.json();
-                if (response.ok) {
-                    alert('Logged in successfully!');
-                    document.cookie = `token=${data.token}; path=/`;
-                    window.location.href = 'index.html';
-                } else {
-                    alert(data.error);
-                }
+            const response = await fetch('http://localhost:3000/api/user/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+            const data = await response.json();
+            if (response.status === 200) {
+                alert('Logged in successfully!');
+                document.cookie = `token=${data.token}; path=/`;
+                window.location.href = 'index.html';
+            }else if (response.status === 600) {
+                alert('Logged in successfully!');
+                document.cookie = `tokenadmin=${data.token}; path=/`;
+                window.location.href = 'admin/AddProduct.html';
+            }  else if (response.status === 401) {
+                alert('Invalid email or password');
+            } else if (response.status === 501) {
+                alert('User is not active');
+            } else {
+                alert(data.error);
+            }
             } catch (error) {
-                alert('Error logging in: ' + error.message);
+            alert('Error logging in: ' + error.message);
             }
         }
+
+        document.getElementById('loginForm').addEventListener('submit', handleLogin);
 
         async function handleRegister(event) {
             event.preventDefault();
@@ -166,12 +176,13 @@ function redirectToLoginIfNotLoggedIn() {
             const password = document.getElementById('registerPassword').value;
             const address = document.getElementById('registerAddress').value;
             const active = true;
+            const admin = false;
 
             try {
-                const response = await fetch('https://reshopapi.onrender.com/api/user/signup', {
+                const response = await fetch('http://localhost:3000/api/user/signup', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name, email, contact, password, address, active })
+                    body: JSON.stringify({ name, email, contact, password, address, active, admin })
                 });
                 const data = await response.json();
                 if (response.ok) {

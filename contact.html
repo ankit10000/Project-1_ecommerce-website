@@ -129,7 +129,7 @@
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
 
-            fetch('https://reshopapi.onrender.com/api/submit-contact', {
+            fetch('http://localhost:3000/api/submit-contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
