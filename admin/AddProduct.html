@@ -225,10 +225,9 @@
                     contacts.forEach(contact => {
                         const row = contactsTableBody.insertRow();
                         row.insertCell(0).innerText = contact.id;
-                        row.insertCell(1).innerText = contact.user_id;
-                        row.insertCell(2).innerText = contact.items;
-                        row.insertCell(3).innerHTML = contact.address;
-                        row.insertCell(4).innerHTML = contact.payment_method;
+                        row.insertCell(1).innerText = contact.name;
+                        row.insertCell(2).innerText = contact.email;
+                        row.insertCell(3).innerHTML = contact.message;
                         row.insertCell(5).innerHTML = contact.created_at;
                     });
                 } catch (error) {
@@ -389,6 +388,7 @@
             document.addEventListener('DOMContentLoaded', fetchProducts);
             document.addEventListener('DOMContentLoaded', fetchUsers);
             document.addEventListener('DOMContentLoaded', fetchOrders);
+            document.addEventListener('DOMContentLoaded', fetchContacts);
         } else if (!token) {
             window.location.href = '../login.html';
         }
