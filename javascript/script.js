@@ -140,12 +140,28 @@ function showLogout() {
 
 window.reload = showLogout();
 
+function scroll_up() {
+    window.scrollTo({
+    top: 0,
+    left: 100,
+    behavior: "smooth",
+    });
+}
+
+window.addEventListener('scroll', function() {
+    var scrollButton = document.getElementById('scroll_up');
+    if (window.pageYOffset === 0) {
+    scrollButton.style.display = 'none';
+    } else {
+    scrollButton.style.display = 'block';
+    }
+});
 
 async function fetchProducts() {
     const response = await fetch('https://reshopapi.onrender.com/api/product/getproducts');
     const products = await response.json();
 
-    // Limit to the first 6 products
+    // Limit to the first 8 products
     const limitedProducts = products.slice(0, 8);
 
     const featuredProducts = document.getElementById('featured-products');
@@ -159,9 +175,22 @@ async function fetchProducts() {
                     ${[...Array(5 - product.rating)].map(() => '<i class="far fa-star"></i>').join('')}
                 </div>
                 <p>₹${product.price}</p>
-                <button onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
+                <button class="add-to-cart" data-name="${product.name}" data-price="${product.price}">Add to Cart</button>
             </div>
         `).join('');
+
+        // Add event listeners to buttons
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', (event) => {
+                addToCart(event.target.dataset.name, event.target.dataset.price);
+                event.target.textContent = 'Added';
+                event.target.disabled = true;
+                setTimeout(() => {
+                    event.target.innerHTML = "Add to Cart &#8594;";
+                    event.target.disabled = false;
+                }, 1500); // Optional: disable the button after adding
+            });
+        });
     }
 }
 

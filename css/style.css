@@ -343,6 +343,9 @@ ul {
 /* media query for menu */
 
 @media only screen and (max-width: 800px) {
+  button:hover {
+    background-color: #0061d9 !important;
+  }
   nav ul {
     position: absolute;
     top: 70px;
@@ -352,6 +355,12 @@ ul {
     z-index: 1;
     overflow: hidden;
     transition: max-height 0.5s;
+  }
+  .col-4 img:hover {
+    transform: none !important;
+  }
+  .col-4:hover {
+    transform: none !important;
   }
   nav ul li {
     display: block;
@@ -1110,4 +1119,29 @@ form button:hover {
 .about-page{
   margin-top: 110px;
   margin-bottom: 140px;
+}
+#scroll_up {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  color: white;
+  cursor: pointer;
+  /* padding: 5px; */
+  display: none;
+  /* border-radius: 10px; */
+}
+#scroll_up button {
+  background-color: #000000 !important;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: auto;
+  width: 100%;
+  border-radius: 10px;
+  transition: background 0.5s;
 }

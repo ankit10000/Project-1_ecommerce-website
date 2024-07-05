@@ -42,11 +42,13 @@
             z-index: -1;
             filter: blur(1px) brightness(80%);
         }
+
         .hero-text {
-            z-index: 1;
+            /* z-index: 1; */
             position: relative;
             top: 25%;
         }
+
         .hero-text h1 {
             font-size: 3.5em;
             margin-bottom: 10px;
@@ -169,7 +171,7 @@
         /* Responsive styles */
         @media only screen and (max-width: 768px) {
             .hero {
-                height: 60vh;
+                height: 90vh;
             }
 
             .hero-text h1 {
@@ -220,6 +222,7 @@
             width: 100%;
             overflow: hidden;
             position: absolute;
+            z-index: -1;
         }
 
         .slider-wrapper {
@@ -283,11 +286,11 @@
         <video autoplay muted loop>
             <source src="vedio/background1.mp4" type="video/mp4">
         </video>
-            <div class="hero-text">
-                <h1>Welcome to Red-Shop</h1>
-                <p>Your one-stop shop for all fashion needs</p>
-                <a href="product.html" class="btn">Shop Now</a>
-            </div>
+        <div class="hero-text">
+            <h1>Welcome to Red-Shop</h1>
+            <p>Your one-stop shop for all fashion needs</p>
+            <a href="product.html" class="btn">Shop Now</a>
+        </div>
         <div class="image_slider">
             <div class="slider-wrapper">
                 <img src="image/trial.jpg" alt="Image 1">
@@ -387,7 +390,7 @@
             <p class="copyright">Red-Shop - 2024</p>
         </div>
     </div>
-
+    <div id="scroll_up"><button onclick="scroll_up()">&uarr;</button></div>
     <script>
         var MenuItems = document.getElementById('MenuItems');
         MenuItems.style.maxHeight = '0px';
@@ -400,6 +403,17 @@
             }
         }
         
+        document.querySelectorAll('.offer .btn').forEach(button => {
+            button.addEventListener('click', (event) => {
+                event.target.textContent = 'Added';
+                event.target.disabled = true;
+                setTimeout(() => {
+                    event.target.innerHTML = "Add to Cart &#8594;";
+                    event.target.disabled = false;
+                }, 1500);
+            });
+        });
+
     </script>
     <script src="./javascript/script.js"></script>
 </body>

@@ -118,6 +118,8 @@
             <p class="copyright">Red-Shop - 2024</p>
         </div>
     </div>
+    <div id="scroll_up"><button onclick="scroll_up()">&uarr;</button></div>
+
     <script>
         var MenuItems = document.getElementById('MenuItems');
         MenuItems.style.maxHeight = '0px';
@@ -155,7 +157,7 @@
         }
         function displayProducts(products) {
             const productList = document.getElementById('product-list');
-            productList.innerHTML = products.map(product => product ? `
+            productList.innerHTML = products.map(product => `
                 <div class="col-4">
                     <img src="${product.image}" alt="${product.name}">
                     <h4>${product.name}</h4>
@@ -164,9 +166,22 @@
                         ${[...Array(5 - product.rating)].map(() => '<i class="far fa-star"></i>').join('')}
                     </div>
                     <p>₹${product.price}</p>
-                    <button onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
-                </div>
-            `: `<h1>loading</h1>`).join('');
+                    <button class="add-to-cart" data-name="${product.name}" data-price="${product.price}">Add to Cart</button>
+            </div>
+        `).join('');
+
+        // Add event listeners to buttons
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', (event) => {
+                addToCart(event.target.dataset.name, event.target.dataset.price);
+                event.target.textContent = 'Added';
+                event.target.disabled = true;
+                setTimeout(() => {
+                event.target.innerHTML = "Add to Cart &#8594;";
+                event.target.disabled = false;
+            }, 1500); // Optional: disable the button after adding
+            });
+        });
         }
 
         function sortProducts(criteria) {
