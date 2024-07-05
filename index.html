@@ -26,7 +26,7 @@
             color: #fff;
             display: flex;
             justify-content: center;
-            align-items: center;
+            /* align-items: center; */
             text-align: center;
             overflow: hidden;
         }
@@ -40,8 +40,13 @@
             object-fit: cover;
             transform: translate(-50%, -50%);
             z-index: -1;
+            filter: blur(1px) brightness(80%);
         }
-
+        .hero-text {
+            z-index: 1;
+            position: relative;
+            top: 25%;
+        }
         .hero-text h1 {
             font-size: 3.5em;
             margin-bottom: 10px;
@@ -52,7 +57,7 @@
             font-size: 1.2em;
             margin-bottom: 20px;
             animation: fadeInUp 1s;
-            color:#0061d9
+            color: #ffffff
         }
 
         /* .hero-text .btn {
@@ -205,9 +210,40 @@
 
             .col-4 {
                 flex-basis: 80%;
-        margin: auto;
+                margin: auto;
             }
 
+        }
+
+        .image_slider {
+            top: 35%;
+            width: 100%;
+            overflow: hidden;
+            position: absolute;
+        }
+
+        .slider-wrapper {
+            display: flex;
+            width: calc(200%);
+            animation: scroll 12s linear infinite;
+        }
+
+        .slider-wrapper img {
+            width: 50vw;
+            height: 350px;
+            margin-right: 20px;
+            border-radius: 10px;
+            filter: brightness(60%);
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-40%);
+            }
         }
     </style>
 </head>
@@ -245,12 +281,26 @@
     <!-- Hero Banner -->
     <div class="hero">
         <video autoplay muted loop>
-            <source src="vedio/background.mp4" type="video/mp4">
+            <source src="vedio/background1.mp4" type="video/mp4">
         </video>
-        <div class="hero-text">
-            <h1>Welcome to Red-Shop</h1>
-            <p>Your one-stop shop for all fashion needs</p>
-            <a href="product.html" class="btn">Shop Now</a>
+            <div class="hero-text">
+                <h1>Welcome to Red-Shop</h1>
+                <p>Your one-stop shop for all fashion needs</p>
+                <a href="product.html" class="btn">Shop Now</a>
+            </div>
+        <div class="image_slider">
+            <div class="slider-wrapper">
+                <img src="image/trial.jpg" alt="Image 1">
+                <img src="image/trial.jpg" alt="Image 2">
+                <img src="image/trial.jpg" alt="Image 3">
+                <img src="image/trial.jpg" alt="Image 1">
+                <img src="image/trial.jpg" alt="Image 2">
+                <img src="image/trial.jpg" alt="Image 3">
+                <img src="image/trial.jpg" alt="Image 1">
+                <img src="image/trial.jpg" alt="Image 2">
+                <img src="image/trial.jpg" alt="Image 3">
+                <img src="image/trial.jpg" alt="Image 1">
+            </div>
         </div>
     </div>
 
@@ -349,6 +399,7 @@
                 MenuItems.style.maxHeight = '0px';
             }
         }
+        
     </script>
     <script src="./javascript/script.js"></script>
 </body>

@@ -7,11 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <title>Manage Products</title>
+    <style>
+        .title {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container"
-        style="position: fixed; z-index: 1; top: 0px;  width: 100%;">
+    <div class="container" style="position: fixed; z-index: 1; top: 0px;  width: 100%;">
         <div class="navbar">
             <div class="logo">
                 <h1 style="color: aliceblue; text-decoration: underline;">Admin Panel</h1>
@@ -19,6 +23,8 @@
             <nav>
                 <ul id="MenuItems">
                     <li><a href="#alluser">All Users</a></li>
+                    <li><a href="#allorder">All Orders</a></li>
+                    <li><a href="#allcontact">All Contact</a></li>
                     <li><a href="#all">All Products</a></li>
                     <li><a href="#add">Add Product</a></li>
                     <li><a href="#update">Update Product</a></li>
@@ -28,8 +34,8 @@
             </nav>
         </div>
     </div>
-    <div id="alluser"></div>
     <div class="main" style="margin-top: 100px;">
+        <div id="alluser"></div>
         <div class="small-container login-page">
             <h2 class="title">All Users</h2>
             <table id="usersTable">
@@ -49,7 +55,7 @@
                     <!-- Product rows will be added here dynamically -->
                 </tbody>
             </table>
-            <div id="all"></div>
+            <div id="allorder"></div>
         </div>
     </div>
     <div class="main" style="margin-top: 100px;">
@@ -70,7 +76,27 @@
                     <!-- Product rows will be added here dynamically -->
                 </tbody>
             </table>
-            <div id="add"></div>
+            <div id="allcontact"></div>
+        </div>
+    </div>
+    <div class="main" style="margin-top: 100px;">
+        <div class="small-container login-page">
+            <h2 class="title">All Contact Us ! Feedback</h2>
+            <table id="contactsTable">
+                <thead>
+                    <tr>
+                        <th>Contact ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Message</th>
+                        <th>Post Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Product rows will be added here dynamically -->
+                </tbody>
+            </table>
+            <div id="all"></div>
         </div>
     </div>
     <div class="main" style="margin-top: 100px;">
@@ -142,27 +168,27 @@
 
     <!-- <script src="../javascript/script.js"></script> -->
     <script>
-function getCookieAdmin(name) {
-    let cookieArr = document.cookie.split(";");
-    for (let i = 0; i < cookieArr.length; i++) {
-        let cookiePair = cookieArr[i].split("=");
-        if (name == cookiePair[0].trim()) {
-            return decodeURIComponent(cookiePair[1]);
+        function getCookieAdmin(name) {
+            let cookieArr = document.cookie.split(";");
+            for (let i = 0; i < cookieArr.length; i++) {
+                let cookiePair = cookieArr[i].split("=");
+                if (name == cookiePair[0].trim()) {
+                    return decodeURIComponent(cookiePair[1]);
+                }
+            }
+            return null;
         }
-    }
-    return null;
-}
 
 
-function setCookieAdmin(name, value, days) {
-    let expires = "";
-    if (days) {
-        let date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + (value || "") + expires + "; path=/";
-}
+        function setCookieAdmin(name, value, days) {
+            let expires = "";
+            if (days) {
+                let date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
         var token = getCookieAdmin('tokenadmin');
         if (token) {
             async function fetchOrders() {
@@ -184,7 +210,30 @@ function setCookieAdmin(name, value, days) {
                     });
                 } catch (error) {
                     console.error('Error fetching products:', error);
-                    alert('An error occurred while fetching products.');
+                    alert('An error occurred whinav ul lile fetching products.');
+                }
+            }
+
+            async function fetchContacts() {
+                try {
+                    const response = await fetch('https://reshopapi.onrender.com/api/get-submit-contact');
+                    const contacts = await response.json();
+                    const contactsTableBody = document.getElementById('contactsTable').getElementsByTagName('tbody')[0];
+
+                    contactsTableBody.innerHTML = '';
+
+                    contacts.forEach(contact => {
+                        const row = contactsTableBody.insertRow();
+                        row.insertCell(0).innerText = contact.id;
+                        row.insertCell(1).innerText = contact.user_id;
+                        row.insertCell(2).innerText = contact.items;
+                        row.insertCell(3).innerHTML = contact.address;
+                        row.insertCell(4).innerHTML = contact.payment_method;
+                        row.insertCell(5).innerHTML = contact.created_at;
+                    });
+                } catch (error) {
+                    console.error('Error fetching products:', error);
+                    alert('An error occurred whinav ul lile fetching products.');
                 }
             }
 
@@ -262,7 +311,7 @@ function setCookieAdmin(name, value, days) {
                     if (response.ok) {
                         alert('Product added successfully!');
                         document.getElementById('addProduct').reset();
-                        fetchProducts(); 
+                        fetchProducts();
                     } else {
                         alert('Failed to add product.');
                     }
@@ -300,7 +349,7 @@ function setCookieAdmin(name, value, days) {
                     if (response.ok) {
                         alert('Product updated successfully!');
                         document.getElementById('updateProduct').reset();
-                        fetchProducts(); 
+                        fetchProducts();
                     } else {
                         alert('Failed to update product.');
                     }
