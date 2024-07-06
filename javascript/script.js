@@ -144,18 +144,18 @@ window.reload = showLogout();
 
 function scroll_up() {
     window.scrollTo({
-    top: 0,
-    left: 100,
-    behavior: "smooth",
+        top: 0,
+        left: 100,
+        behavior: "smooth",
     });
 }
 
-window.addEventListener('scroll', function() {
+window.addEventListener('scroll', function () {
     var scrollButton = document.getElementById('scroll_up');
-    if (window.pageYOffset === 0) {
-    scrollButton.style.display = 'none';
+    if (window.scrollY === 0) {
+        scrollButton.style.display = 'none';
     } else {
-    scrollButton.style.display = 'block';
+        scrollButton.style.display = 'block';
     }
 });
 
@@ -205,53 +205,53 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchProducts();
     // fetchFeaturedProducts();
     const ctxSales = document.getElementById('salesChart').getContext('2d');
-const salesChart = new Chart(ctxSales, {
-    type: 'line',
-    data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-        datasets: [{
-            label: 'Sales',
-            data: [1200, 1900, 3000, 5000, 2300, 3400],
-            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-            borderColor: 'rgba(54, 162, 235, 1)',
-            borderWidth: 1,
-            fill: true
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: true,
-        scales: {
-            y: {
-                beginAtZero: true
+    const salesChart = new Chart(ctxSales, {
+        type: 'line',
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+            datasets: [{
+                label: 'Sales',
+                data: [1200, 1900, 3000, 5000, 2300, 3400],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
             }
         }
-    }
-});
+    });
 
-// Customer Growth Chart
-const ctxCustomer = document.getElementById('customerChart').getContext('2d');
-const customerChart = new Chart(ctxCustomer, {
-    type: 'bar',
-    data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-        datasets: [{
-            label: 'Customers',
-            data: [50, 100, 150, 200, 250, 300],
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgba(75, 192, 192, 1)',
-            borderWidth: 1
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: true,
-        scales: {
-            y: {
-                beginAtZero: true
+    // Customer Growth Chart
+    const ctxCustomer = document.getElementById('customerChart').getContext('2d');
+    const customerChart = new Chart(ctxCustomer, {
+        type: 'bar',
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+            datasets: [{
+                label: 'Customers',
+                data: [50, 100, 150, 200, 250, 300],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
             }
         }
-    }
-});
+    });
 });
 

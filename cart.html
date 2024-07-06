@@ -234,7 +234,7 @@ account_circle
             const paymentMethod = document.getElementById('checkoutPaymentMethod').value;
             const items = JSON.parse(localStorage.getItem('cart')) || [];
             const token = getCookie('token');
-
+            const cartTotal = items.reduce((total, item) => total + item.price * item.quantity, 0);
              if (items.length === 0) {
                  alert('Your cart is empty');
             }
@@ -250,7 +250,7 @@ account_circle
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${token}`
                     },
-                    body: JSON.stringify({ items, address, paymentMethod })
+                    body: JSON.stringify({ items, address, paymentMethod, total: cartTotal})
                 });
                 const data = await response.json();
                 if (response.ok) {
