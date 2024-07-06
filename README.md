@@ -1,7 +1,7 @@
 Overview
 
 1. I have successfully completed all task which is given in the project summary.
-2. also using azure service to deploy my project.
+2. also using azure cloud service to deploy my project.
 3. In this project user register by using attributes like contact, email, name, address, password after user login successfully.
 4. if user not logged in and try to checkout, user showing an alert please logged in.
 5. And added annimation like hover, transition, transform also using javascript functions to create my website interactive.
@@ -25,11 +25,11 @@ Usage instruction
 3. you can register and logged-in.
 4. you can add product in the cart and purchase it successfully.
 5. if you can not logged-in you can see alert please logged-in.
-6. after logged-in you can also update user details in the account setection which is given in the navbar.
-7. user can see orders history.
+6. after logged-in you can also update user details in the account section which is given in the navbar.
+7. user can also see orders history.
 
 Advance or extra level
 
 1. you can logged-in as admin.
-2. and then you  can update, delete, add product.
+2. and then you  can update, delete and add product.
 3. also you can see contact us form details, users details, orders of the users, and all products
