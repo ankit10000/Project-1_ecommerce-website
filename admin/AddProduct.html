@@ -29,7 +29,7 @@
                     <li><a href="#add">Add Product</a></li>
                     <li><a href="#update">Update Product</a></li>
                     <li><a href="#delete">Delete Product</a></li>
-                    <li><a href="../login.html" onclick="confirmLogout()">Logout</a></li>
+                    <li><a href="../login.html" onclick="logout()">Logout</a></li>
                 </ul>
             </nav>
         </div>
@@ -392,17 +392,7 @@
         } else if (!token) {
             window.location.href = '../login.html';
         }
-        function confirmLogout() {
-            try {
-                const log = confirm('Are you sure you want to logout?');
-                if (log == true) {
-                    document.cookie = 'tokenadmin=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-                }
-
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        }
+        
 
     </script>
 </body>

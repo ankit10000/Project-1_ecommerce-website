@@ -28,6 +28,8 @@ function deleteCookie(name) {
 
 function logout() {
     deleteCookie('token');
+    deleteCookie('tokenadmin');
+    deleteCookie('visites');
     localStorage.removeItem('cart');
     window.location.href = 'login.html';
 }
