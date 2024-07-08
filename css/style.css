@@ -470,9 +470,9 @@ input:focus {
 
 /* cart items */
 
-.cart-page {
+/* .cart-page {
   margin: 90px auto;
-}
+} */
 
 table {
   width: 100%;
@@ -711,9 +711,9 @@ button:hover {
   margin: 5px 0 10px;
 }
 /* Cart Page Styles */
-.cart-page {
+/* .cart-page {
   margin: 80px auto;
-}
+} */
 
 .cart-page table {
   width: 100%;
@@ -762,7 +762,7 @@ button:hover {
 }
 /* Cart Page Styles */
 .cart-page {
-  margin: 80px auto;
+  margin: 100px auto;
 }
 
 .cart-page table {
@@ -848,7 +848,7 @@ button:hover {
 
 /* Login/Register Page Styles */
 .login-page {
-  margin: 80px auto;
+  margin: 140px auto;
   /* width: 80%; */
 }
 
@@ -1004,7 +1004,7 @@ form button:hover {
 
 /* Contact Page Styles */
 .contact-page {
-  padding: 50px 0;
+  padding: 150px 0;
 }
 
 .contact-page .row {
