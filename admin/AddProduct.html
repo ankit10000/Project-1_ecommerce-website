@@ -22,7 +22,7 @@
                 <h1 style="color: aliceblue; text-decoration: underline;">Admin Panel</h1>
             </div>
             <nav>
-                <ul id="MenuItems">
+                <ul id="MenuItems1">
                     <li><a href="#alluser">All Users</a></li>
                     <li><a href="#allorder">All Orders</a></li>
                     <li><a href="#allcontact">All Contact</a></li>
@@ -33,9 +33,10 @@
                     <li><a href="../login.html" onclick="logout()">Logout</a></li>
                 </ul>
             </nav>
+            <img src="https://i.ibb.co/6XbqwjD/menu.png" alt="Menu Icon" class="menu-icon" onclick="menutoggle()">
         </div>
     </div>
-    <div style="width: 75%; margin: auto; margin-top:100px ;">
+    <div class="chartgraph">
         <h2>Showing Visites</h2>
         <canvas id="myChart"></canvas>
         <h2>Orders by User and Orders by Price</h2>
@@ -126,7 +127,7 @@
     </div>
 
     <div class="main">
-        <div class="small-container login-page">
+        <div class="small-container login-page small-container1">
             <div class="form-container1">
                 <h2 class="title">Add Product</h2>
                 <form id="addProduct">
@@ -142,7 +143,7 @@
     </div>
 
     <div class="main">
-        <div class="small-container login-page">
+        <div class="small-container login-page small-container1">
             <div class="form-container1">
                 <h2 class="title">Update Product</h2>
                 <form id="updateProduct">
@@ -159,7 +160,7 @@
     </div>
 
     <div class="main">
-        <div class="small-container login-page">
+        <div class="small-container login-page small-container1">
             <div class="form-container1">
                 <h2 class="title">Delete Product</h2>
                 <form id="deleteProduct">
@@ -169,8 +170,26 @@
             </div>
         </div>
     </div>
+<script>var MenuItems = document.getElementById('MenuItems1');
+    MenuItems.style.maxHeight = '0px';
+    
+    function menutoggle() {
+        if (MenuItems.style.maxHeight == '0px') {
+            MenuItems.style.maxHeight = '250px';
+            MenuItems.style.textAlign = 'center';
+            MenuItems.style.width = '30%';
+            MenuItems.style.left = '511px';
+            MenuItems.style.top = '57px';
+        } else {
+            MenuItems.style.maxHeight = '0px';
+            MenuItems.style.maxHeight = '0';
+            MenuItems.style.textAlign = 'none';
+            MenuItems.style.width = '0%';
+            MenuItems.style.left = '0';
+            MenuItems.style.top = '0';
+        }
+    }</script>
     <script src="adminpanel.js"></script>
-
 </body>
 
 </html>

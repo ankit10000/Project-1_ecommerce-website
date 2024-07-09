@@ -86,10 +86,11 @@
 /* Product Categories */
 .categories {
     margin: 50px 0;
+    width: 100%;
 }
 
 .categories .col-3 {
-    padding: 15px;
+    /* padding: 15px; */
     transition: transform 0.5s;
 }
 

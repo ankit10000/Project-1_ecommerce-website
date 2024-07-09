@@ -1,3 +1,4 @@
+
 var token = getCookie('token');
         if (token) {
             fetch('https://reshopapi.onrender.com/api/user-details', {
