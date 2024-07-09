@@ -215,7 +215,7 @@
 .slider-wrapper {
     display: flex;
     width: calc(200%);
-    animation: scroll 12s linear infinite;
+    animation: scroll 25s linear infinite;
 }
 
 .slider-wrapper img {
@@ -232,6 +232,6 @@
     }
 
     100% {
-        transform: translateX(-40%);
+        transform: translateX(-128%);
     }
 }
